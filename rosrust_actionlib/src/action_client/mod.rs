@@ -4,7 +4,7 @@ pub use self::simple_action_client::SimpleActionClient;
 use crate::static_messages::{MUTEX_LOCK_FAIL, UNEXPECTED_FAILED_NAME_RESOLVE};
 use crate::{Action, ActionResponse, FeedbackBody, GoalBody, GoalID};
 use rosrust::error::Result;
-use rosrust_msg::actionlib_msgs::GoalStatusArray;
+// use rosrust_msg::actionlib_msgs::GoalStatusArray;
 use std::sync::{Arc, Mutex};
 
 mod client_goal_handle;

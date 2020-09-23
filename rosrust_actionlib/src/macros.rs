@@ -81,7 +81,7 @@ macro_rules! action {
                     };
                     let status = $crate::GoalStatus {
                         goal_id,
-                        state: self.status.status.try_into().unwrap_or($crate::GoalState::Lost),
+                        status: self.status.status.try_into().unwrap_or($crate::GoalState::Lost as u8),
                         text: self.status.text,
                     };
                     $crate::Response {
@@ -103,7 +103,7 @@ macro_rules! action {
                     };
                     let status = $root::actionlib_msgs::GoalStatus {
                         goal_id,
-                        status: t.status.state as u8,
+                        status: t.status.status as u8,
                         text: t.status.text,
                     };
                     Self {

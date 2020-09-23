@@ -1,4 +1,6 @@
-use rosrust_msg::actionlib_msgs::{GoalID, GoalStatus as GoalStatusRaw};
+use crate::msg;
+use msg::actionlib_msgs::GoalID;
+use msg::actionlib_msgs::GoalStatus as GoalStatusRaw;
 use std::convert::{TryFrom, TryInto};
 
 // TODO: consider removing "Lost"

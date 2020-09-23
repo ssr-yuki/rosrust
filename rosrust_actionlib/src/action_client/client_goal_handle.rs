@@ -100,7 +100,7 @@ impl<'a, T: Action> ClientGoalHandle<T> for SyncClientGoalHandle<'a, T> {
 
     #[inline]
     fn goal_state(&self) -> GoalState {
-        self.state_machine.latest_goal_status().state
+        self.state_machine.latest_goal_status().status
     }
 
     #[inline]
@@ -123,7 +123,7 @@ impl<'a, T: Action> ClientGoalHandle<T> for SyncClientGoalHandle<'a, T> {
                 self.state_machine.state(),
             );
         }
-        let goal_state = self.state_machine.latest_goal_status().state;
+        let goal_state = self.state_machine.latest_goal_status().status as u8;
         match goal_state {
             GoalState::Preempted
             | GoalState::Succeeded

@@ -1,4 +1,6 @@
-use crate::{Goal, GoalID, GoalState, GoalStatus};
+use crate::msg;
+use crate::{Goal, GoalState, GoalStatus};
+use msg::actionlib_msgs::GoalID;
 use rosrust::Time;
 use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::Arc;
@@ -52,7 +54,7 @@ impl<T: rosrust::Message> StatusTracker<T> {
     pub fn to_status(&self) -> GoalStatus {
         GoalStatus {
             goal_id: self.goal_id.clone(),
-            state: self.state,
+            status: self.state as u8,
             text: self.text.clone(),
         }
     }

@@ -1,10 +1,11 @@
 pub use self::action_client::{ActionClient, ClientGoalHandle, SimpleActionClient};
 pub use self::action_server::ActionServer;
-pub use self::goal_status::{GoalState, GoalStatus};
+pub use self::goal_status::GoalState;
+pub use msg::actionlib_msgs::{GoalID, GoalStatus, GoalStatusArray};
+// pub use msg::actionlib_msgs::GoalStatus;
+pub use msg::std_msgs::Header;
 #[doc(hidden)]
 pub use paste;
-pub use rosrust_msg::actionlib_msgs::GoalID;
-pub use rosrust_msg::std_msgs::Header;
 
 pub mod action_client;
 pub mod action_server;
@@ -13,6 +14,14 @@ mod goal_status;
 mod macros;
 mod impls;
 mod static_messages;
+mod msg {
+    rosrust::rosmsg_include!(
+        actionlib_msgs / GoalID,
+        actionlib_msgs / GoalStatus,
+        actionlib_msgs / GoalStatusArray,
+        std_msgs / Header
+    );
+}
 
 pub trait Action: rosrust::Message {
     type Goal: ActionGoal;
